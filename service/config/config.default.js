@@ -22,7 +22,17 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
-
+  config.mysql = {
+    client: {
+      host: 'localhost',
+      port: '3306',
+      user: 'root',
+      password: '123456',
+      database: 'react-blog',
+    },
+    app: true,
+    agent: false
+  }
   return {
     ...config,
     ...userConfig,
