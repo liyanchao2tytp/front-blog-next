@@ -1,0 +1,10 @@
+.add-div{
+  margin-top: 1rem;
+ 
+}
+
+.add-div div{
+  border-radius: .3rem;
+  margin-bottom: .2rem;
+  overflow: hidden;
+}
