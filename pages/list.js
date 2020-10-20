@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Author from "../components/Author";
 import Advert from "../components/Advert";
 import Footer from "../components/Footer";
-import { Col, Row, List, Breadcrumb } from "antd";
+import { Col, Row, List, Breadcrumb,Tag } from "antd";
 import {
   FireOutlined,
   CalendarOutlined,
@@ -68,6 +68,8 @@ const myList = (props) => {
                   </Link>
                 </div>
                 <div className="list-icon">
+                <span>{item.is_top ? <Tag color="red">置顶</Tag> : ""}</span>
+
                   <span>
                     <CalendarOutlined />
                     {item.addTime}

@@ -8,7 +8,7 @@ const Author = () => {
       </div>
       <div className="author-intro">
         学习next和egg时候做的一个小博客，后期可能会修改一些样式和技术栈之类的，
-        希望有一天自己也可以慢慢变的好起来
+        希望有一天自己技术也可以慢慢变的好起来
       </div>
       <Divider>社交账号</Divider>
       
