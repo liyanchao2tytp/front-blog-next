@@ -8,7 +8,7 @@ body{
 .bread-div{
   padding: .5rem;
   border-bottom:1px solid #eee;
-  background-color: #e1f0ff;
+  background-color:rgba(255, 255, 255, 0.3);
 }
 
 .comm-left{
