@@ -17,7 +17,7 @@ import servicePath from "../config/apiUrl";
 import marked from "marked";
 import hljs from "highlight";
 import "highlight.js/styles/monokai-sublime.css";
-
+import "../styles/pages/comp.css"
 const myList = (props) => {
   const [myList, setMylist] = useState(props.data);
   const renderer = new marked.Renderer();

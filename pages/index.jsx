@@ -6,7 +6,7 @@ import "../styles/pages/index.css";
 import Author from "../components/Author";
 import Advert from "../components/Advert";
 import Footer from "../components/Footer";
-import { Col, Row, List, BackTop, Carousel, Tag } from "antd";
+import { Col, Row, List, BackTop, Carousel, Tag, Divider } from "antd";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -16,6 +16,7 @@ import {
   FireOutlined,
   CalendarOutlined,
   FolderOutlined,
+  RocketOutlined,
 } from "@ant-design/icons";
 import servicePath from "../config/apiUrl";
 
@@ -41,11 +42,16 @@ const Home = (props) => {
 
   const contentStyle = {
     height: "300px",
-    color: "#fff",
+    width:"100%",
+    // color: "#fff",
     lineHeight: "300px",
     textAlign: "center",
     background: "#364d79",
   };
+
+  const ss = {
+    objectFit:"cover"
+  }
 
   return (
     <>
@@ -57,23 +63,33 @@ const Home = (props) => {
 
       <Row className="comm-main" type="flex" justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
-          <Swiper
-            spaceBetween={50}
-            slidesPerView={3}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
-          >
-            <SwiperSlide>
-              <div className={contentStyle}>dsf</div>
-            </SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            ...
-          </Swiper>
+          <Carousel autoplay>
+            <div>
+              <h3>
+                <img style={contentStyle} src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603443491910&di=e4691e8550018d62f8fa544b08ef8636&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201702%2F03%2F20170203100831_ZnuRG.jpeg" alt=""/>
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <img  style={contentStyle} src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603443458590&di=00276f03c816a2efa1cdf70a876a3152&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201408%2F18%2F102924ksgdxyyacjdggygx.jpg" alt=""/>
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <img style={contentStyle} src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603519904703&di=77b3b7c36c8c8712a6089dd283c80a14&imgtype=0&src=http%3A%2F%2Fbbsfiles.vivo.com.cn%2Fvivobbs%2Fattachment%2Fforum%2F201706%2F24%2F160153jcicq9jfcisld7v7.jpg" alt=""/>
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <img style={contentStyle} src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603449576121&di=4c361ba3ea8e5c0d2dd37dec595724a9&imgtype=0&src=http%3A%2F%2Fartenvoyage.org%2FFCKEeditor%2Fattached%2Fimage%2F20160125%2F20160125130677037703.jpg" alt=""/>
+              </h3>
+            </div>
+          </Carousel>
+        
           <List
-            header={<div>最新日志</div>}
+            header={<Divider>最新日志</Divider>}
             itemLayout="vertical"
+            
             dataSource={myList}
             renderItem={(item) => (
               <List.Item>
@@ -83,16 +99,18 @@ const Home = (props) => {
                   </Link>
                 </div>
                 <div className="list-icon">
-                  <span>{item.is_top ? <Tag color="red">置顶</Tag> : ""}</span>
-                  <span className='span-calendar'>
+                  <span className="list-icon-top">
+                    {item.is_top ? <Tag color="red">置顶</Tag> : ""}
+                  </span>
+                  <span className="span-calendar span">
                     <CalendarOutlined />
                     {item.addTime}
                   </span>
-                  <span>
+                  <span className=".span">
                     <FolderOutlined />
                     {item.typeName}
                   </span>
-                  <span>
+                  <span className=".span">
                     <FireOutlined />
                     {item.view_count}人
                   </span>
@@ -112,7 +130,9 @@ const Home = (props) => {
       </Row>
 
       <Footer />
-      <BackTop />
+      <BackTop>
+      <RocketOutlined />
+      </BackTop>
     </>
   );
 };
