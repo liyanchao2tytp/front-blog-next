@@ -1,10 +1,11 @@
 body {
-  background: url(https://s1.ax1x.com/2020/10/25/Bel6ld.jpg) no-repeat center
+  background: url(https://s1.ax1x.com/2020/10/26/Bue6AS.jpg) no-repeat center
     center;
   background-size: cover;
   background-attachment: fixed;
   background-color: #cccccc;
 }
+
 .comm-main .comm-left{
   background-color: rgba(255,255,255, 0.46);
   /* opacity: 80%; */
@@ -22,7 +23,7 @@ body {
   /* animation: animation 1000ms linear both; */
   background-color: rgba(255,255,255, 0.69);
   box-shadow: 15px 15px 30px rgba(100,100,100,0.69),-15px 15px 30px rgba(100,100,100,0.69);
-  transform: translateY(-5px);
+  transform: translateY(-2px);
 
   
 }
@@ -61,6 +62,7 @@ body {
   display: flex;
   padding: 0.5rem 0;
   color: #aaa;
+  
 }
 .list-icon .list-icon-top {
   padding: 0 0 0 10px;

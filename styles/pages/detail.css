@@ -1,19 +1,32 @@
 .bread-div{
   padding: .5rem;
   border-bottom:1px solid #eee;
-  background-color: #e1f0ff;
+  background-color: rgba(255,255,255,1);
 }
 .detailed-title{
   font-size: 1.8rem;
   text-align: center;
   padding: 1rem;
 }
+
+.ant-anchor-link{
+  background-color: rgba(255,255,255,0);
+
+}
+
 .center{
   text-align: center;
+}
+.detailed-title-bar{
+  background-color: rgba(255,255,255,0.8);
 }
 .detailed-content{
   padding: 1.3rem;
   font-size: 1rem;
+  background-color: rgba(255,255,255,0.8);
+}
+.ant-anchor-wrapper{
+  background-color: rgba(255,255,255,0.2);
 }
 pre{
   display: block;
@@ -61,6 +74,7 @@ code {
 .active{
   color:rgb(30, 144, 255) !important;
 }
+
 .nav-title{
   text-align: center;
   color: #888;

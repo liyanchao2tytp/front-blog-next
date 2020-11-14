@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Header from "../components/Header";
-import "../styles/pages/detail.css";
+import "../styles/pages/detail.css"
 
 import { Col, Row, Breadcrumb, Affix } from "antd";
 import {
@@ -26,6 +26,7 @@ import "highlight.js/styles/monokai-sublime.css";
 import Tocify from '../components/tocify.tsx'
 
 import servicePath from '../config/apiUrl'
+import "../styles/pages/detail.css"
 const Detail = (props) => {
   const tocify = new Tocify()
   const renderer = new marked.Renderer();
@@ -72,7 +73,7 @@ const Detail = (props) => {
               <Breadcrumb.Item>{props.title}</Breadcrumb.Item>
             </Breadcrumb>
           </div>
-          <div>
+          <div className="detailed-title-bar">
             <div className="detailed-title">{props.title}</div>
             <div className="list-icon center">
               <span>
@@ -81,7 +82,7 @@ const Detail = (props) => {
               </span>
               <span>
                 <FolderOutlined />
-                视频教程
+                {props.typeName}
               </span>
               <span>
                 <FireOutlined />
