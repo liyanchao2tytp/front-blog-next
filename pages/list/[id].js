@@ -1,16 +1,16 @@
 /*
  * @Author: lyc
- * @Date: 2020-10-25 21:46:18
+ * @Date: 2020-11-21 15:30:42
  * @LastEditors: lyc
- * @LastEditTime: 2020-11-21 17:50:40
- * @Description: 使用参数的形式访问该页面  即?id=xxx
+ * @LastEditTime: 2020-11-22 16:52:02
+ * @Description: file content
  */
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Header from "../components/Header";
-import Author from "../components/Author";
-import Advert from "../components/Advert";
-import Footer from "../components/Footer";
+import Header from "../../components/Header";
+import Author from "../../components/Author";
+import Advert from "../../components/Advert";
+import Footer from "../../components/Footer";
 import {
   Col, Row, List, Breadcrumb, BackTop,
   ConfigProvider,
@@ -28,29 +28,31 @@ import {
 } from "@ant-design/icons";
 import Link from 'next/link'
 import axios from "axios";
-import servicePath from "../config/apiUrl";
+import servicePath from "../../config/apiUrl";
 
 import marked from "marked";
 import hljs from "highlight";
 import "highlight.js/styles/monokai-sublime.css";
-import "../styles/pages/comp.css"
+import "../../styles/pages/comp.css"
 import "animate.css";
 import LazyLoad, { lazyload } from "react-lazyload";
 import { useRouter } from 'next/router'
-import { ARTICLE_TYPE } from '../config/articleType.js'
-const myList = (props) => {
-  const [myList, setMylist] = useState(props.data.article);
+import { ARTICLE_TYPE } from '../../config/articleType.js'
+import fetch from 'node-fetch'
+
+const ArticleList = ({ atlist }) => {
+  const [myList, setMylist] = useState(atlist.data.article);
   const [articleType, setType] = useState('')
   const renderer = new marked.Renderer();
   const router = useRouter();
 
-  let total = props.data.num[0].total
+  let total = atlist.data.num[0].total
   /**
     * @description: 每次进入不同的列表页的时候
     *               更改mylist的值 让页面动态刷新
     */
   useEffect(() => {
-    setMylist(props.data.article)
+    setMylist(atlist.data.article)
     checkArticleType()
 
   }, [router])
@@ -121,7 +123,7 @@ const myList = (props) => {
                   <div className="animate__animated animate__bounceInLeft animate__slow">
                     <div className="list-title">
                       <Link
-                        href={{ pathname: "/detail", query: { id: item.id } }}
+                        href={'/article/[uuid]'} as={'/article/' + item.id}
                       >
                         <a>{item.title}</a>
                       </Link>
@@ -185,14 +187,34 @@ const myList = (props) => {
   );
 };
 
-myList.getInitialProps = async (context) => {
-  let id = context.query.id;
-  const promise = new Promise((resolve) => {
-    axios(`${servicePath.getList}/${id}/1/10`).then((res) => {
-      resolve(res.data)
-    });
-  });
-  return await promise;
-};
+// myList.getInitialProps = async (context) => {
+//   let id = context.query.id;
+//   const promise = new Promise((resolve) => {
+//     axios(`${servicePath.getList}/${id}/1/10`).then((res) => {
+//       resolve(res.data)
+//     });
+//   });
+//   return await promise;
+// };
 
-export default myList;
+// export const getStaticPaths = async () => {
+//   return {
+//     paths: [
+//       { params: { id: '1' } },
+//       { params: { id: '2' } },
+//       { params: { id: '3' } }
+//     ],
+//     fallback: false
+//   }
+// }
+
+export async function getServerSideProps({ params }) {
+  let id = params.id
+  let res = await fetch(`${servicePath.getList}/${id}/1/10`)
+  let atlist = await res.json()
+  return {
+    props: { atlist }
+  }
+}
+
+export default ArticleList;

@@ -1,3 +1,10 @@
+/*
+ * @Author: lyc
+ * @Date: 2020-10-25 21:46:18
+ * @LastEditors: lyc
+ * @LastEditTime: 2020-11-23 13:51:24
+ * @Description: file content
+ */
 import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -13,16 +20,17 @@ import {
   List,
   BackTop,
   Carousel,
-  Tag,
+  ConfigProvider,
   Divider,
   Badge,
   Pagination,
+  Affix,
 } from "antd";
+import zhCN from "antd/lib/locale/zh_CN";
 
 import axios from "axios";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
-import "animate.css";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/swiper-bundle.min.css";
 import {
   FireOutlined,
   CalendarOutlined,
@@ -34,12 +42,13 @@ import servicePath from "../config/apiUrl";
 import marked from "marked";
 import hljs from "highlight";
 import "highlight.js/styles/monokai-sublime.css";
+import "animate.css";
 import LazyLoad from "react-lazyload";
-
-const Home = (props) => {
-  const [myList, setMylist] = useState(props.data.article);
+import fetch from "node-fetch";
+export default ({ arlist }) => {
+  const [myList, setMylist] = useState(arlist.data.article);
   const renderer = new marked.Renderer();
-  let total = props.data.num[0].total
+  let total = arlist.data.num[0].total;
   marked.setOptions({
     renderer: renderer,
     gfm: true,
@@ -64,25 +73,29 @@ const Home = (props) => {
   };
   /**
    * @description: 分页 跳转 获取数据
-   * @param {page} 
-   * @param {pageSize} 
+   * @param {page}
+   * @param {pageSize}
    * @return {*}
    */
-  const gotoPage = (page,pageSize)=>{
+  const gotoPage = (page, pageSize) => {
     axios(`${servicePath.getArticleList}/${page}/${pageSize}`).then((res) => {
-      setMylist(res.data.data.article)
+      setMylist(res.data.data.article);
     });
-  }
+  };
 
   return (
     <>
-      <Head>
-        <title>lyc的个人博客</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className="animate__animated animate__bounceInDown">
-        <Header></Header>
-      </div>
+      <Affix offsetTop={0}>
+        <div>
+          <Head>
+            <title>lyc的个人博客</title>
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <div className="animate__animated animate__bounceInDown">
+            <Header></Header>
+          </div>
+        </div>
+      </Affix>
 
       <Row className="comm-main" type="flex" justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
@@ -165,17 +178,26 @@ const Home = (props) => {
               </List.Item>
             )}
           />
-          <Pagination
-            total={total}
-            showSizeChanger
-            showQuickJumper
-            showTotal={(total) => `共 ${total} 条`}
-            onChange={(page,pageSize)=>gotoPage(page,pageSize)}
-            style={{"textAlign": "center","paddingTop":"20px","paddingBottom":"20px"}}
-            
-          />
+          <LazyLoad>
+            <ConfigProvider locale={zhCN}>
+              <div className="animate__animated animate__rubberBand animate__slow">
+                <Pagination
+                  total={total}
+                  showSizeChanger
+                  showQuickJumper
+                  showTotal={(total) => `共 ${total} 条`}
+                  onChange={(page, pageSize) => gotoPage(page, pageSize)}
+                  style={{
+                    textAlign: "center",
+                    paddingTop: "20px",
+                    paddingBottom: "20px",
+                  }}
+                />
+              </div>
+            </ConfigProvider>
+          </LazyLoad>
         </Col>
-        <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
+        <Col className="comm-right" xs={0} sm={0} md={6} lg={5} xl={4}>
           <div className="animate__animated animate__fadeInRightBig">
             <Author />
             <Advert />
@@ -191,13 +213,21 @@ const Home = (props) => {
   );
 };
 
-Home.getInitialProps = async () => {
-  const promise = new Promise((resolve) => {
-    axios(`${servicePath.getArticleList}/1/10`).then((res) => {
-      resolve(res.data);
-    });
-  });
-  return await promise;
-};
+// Home.getInitialProps = async () => {
+//   const promise = new Promise((resolve) => {
+//     axios(`${servicePath.getArticleList}/1/10`).then((res) => {
+//       resolve(res.data);
+//     });
+//   });
+//   return await promise;
+// };
 
-export default Home;
+export async function getServerSideProps() {
+  const res = await fetch(`${servicePath.getArticleList}/1/10`);
+  const arlist = await res.json();
+  return {
+    props: {
+      arlist,
+    },
+  };
+}
