@@ -20,7 +20,7 @@ import Advert from "../components/Advert";
 import axios from "axios";
 
 import marked from "marked";
-import hljs from "highlight";
+import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 
 import Tocify from '../components/tocify.tsx'
@@ -32,6 +32,7 @@ const Detail = (props) => {
   const renderer = new marked.Renderer();
 
   renderer.heading = function (text, level, raw) {
+
     const anchor = tocify.add(text, level);
     return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
   };

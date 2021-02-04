@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 15:30:42
  * @LastEditors: lyc
- * @LastEditTime: 2020-11-22 16:52:02
+ * @LastEditTime: 2021-02-02 17:00:11
  * @Description: file content
  */
 import React, { useEffect, useState } from "react";
@@ -31,7 +31,7 @@ import axios from "axios";
 import servicePath from "../../config/apiUrl";
 
 import marked from "marked";
-import hljs from "highlight";
+import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 import "../../styles/pages/comp.css"
 import "animate.css";

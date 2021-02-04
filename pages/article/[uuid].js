@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 17:25:52
  * @LastEditors: lyc
- * @LastEditTime: 2020-11-22 16:57:23
+ * @LastEditTime: 2021-02-02 16:59:10
  * @Description: 使用动态路由 替换带参的url (?iuuid=xxx)
  */
 import React from "react";
@@ -20,7 +20,7 @@ import Author from "../../components/Author";
 import Advert from "../../components/Advert";
 import fetch from 'node-fetch'
 import marked from "marked";
-import hljs from "highlight";
+import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 
 import Tocify from '../../components/tocify.tsx'

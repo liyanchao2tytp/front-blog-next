@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-10-25 21:46:18
  * @LastEditors: lyc
- * @LastEditTime: 2020-11-23 13:51:24
+ * @LastEditTime: 2021-02-02 17:00:38
  * @Description: file content
  */
 import React, { useState } from "react";
@@ -40,7 +40,7 @@ import {
 import servicePath from "../config/apiUrl";
 
 import marked from "marked";
-import hljs from "highlight";
+import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 import "animate.css";
 import LazyLoad from "react-lazyload";
