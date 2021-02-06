@@ -2,15 +2,14 @@
  * @Author: lyc
  * @Date: 2020-11-21 15:30:42
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-02 17:00:11
+ * @LastEditTime: 2021-02-06 01:17:06
  * @Description: file content
  */
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Header from "../../components/Header";
-import Author from "../../components/Author";
-import Advert from "../../components/Advert";
-import Footer from "../../components/Footer";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
 import {
   Col, Row, List, Breadcrumb, BackTop,
   ConfigProvider,
@@ -18,27 +17,29 @@ import {
   Badge,
   Pagination,
 } from "antd";
-import zhCN from 'antd/lib/locale/zh_CN';
-
 import {
   FireOutlined,
   CalendarOutlined,
   FolderOutlined,
   RocketOutlined
 } from "@ant-design/icons";
-import Link from 'next/link'
-import axios from "axios";
-import servicePath from "../../config/apiUrl";
+import zhCN from 'antd/lib/locale/zh_CN';
 
 import marked from "marked";
+import LazyLoad, { lazyload } from "react-lazyload";
+import fetch from 'node-fetch'
+import axios from "axios";
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
-import "../../styles/pages/comp.css"
-import "animate.css";
-import LazyLoad, { lazyload } from "react-lazyload";
-import { useRouter } from 'next/router'
+// import "animate.css";
+
+import Header from "../../components/Header";
+import Author from "../../components/Author";
+import Advert from "../../components/Advert";
+import Footer from "../../components/Footer";
 import { ARTICLE_TYPE } from '../../config/articleType.js'
-import fetch from 'node-fetch'
+import servicePath from "../../config/apiUrl";
+import "../../styles/pages/comp.css"
 
 const ArticleList = ({ atlist }) => {
   const [myList, setMylist] = useState(atlist.data.article);
@@ -124,6 +125,7 @@ const ArticleList = ({ atlist }) => {
                     <div className="list-title">
                       <Link
                         href={'/article/[uuid]'} as={'/article/' + item.id}
+                        prefetch
                       >
                         <a>{item.title}</a>
                       </Link>
