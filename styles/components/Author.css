@@ -2,41 +2,51 @@
   text-align: center;
   padding: 1rem;
 }
+
 .author-div div {
   margin-bottom: 1rem;
 }
+
 .author-intro {
   font-size: 0.8rem;
-  color: rgb(7, 5, 5);
+  color: #070505;
 }
-.github-icon:hover{
-  background-color: rgb(0, 0, 0);
-}
+
 .github-icon {
   background-color: #999;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
-.qq-icon:hover {
-  background-color: rgb(19, 69, 235);
+
+.github-icon:hover {
+  background-color: black;
 }
+
 .qq-icon {
   background-color: #999;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
-.wechat-icon:hover {
-  background-color: rgb(7, 141, 29);
+
+.qq-icon:hover {
+  background-color: #1345eb;
 }
+
 .wechat-icon {
   background-color: #999;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
+
+.wechat-icon:hover {
+  background-color: #078d1d;
+}
+
 .mylight {
   animation: light 2s linear both infinite;
   transition: all 0.5s;
 }
+
 /* .mylight:hover{
    
     transform: rotate(360deg) scale(1.1);
@@ -44,12 +54,9 @@
 } */
 @keyframes light {
   from {
-    box-shadow: 0 0 1px white, 0 0 5px white, 0 0 10px white, 0 0 20px purple,
-      0 0 5px purple, 0 0 11px pink;
+    box-shadow: 0 0 1px white, 0 0 5px white, 0 0 10px white, 0 0 20px purple, 0 0 5px purple, 0 0 11px pink;
   }
-
   to {
-    box-shadow: 0 0 5px white, 0 0 10px yellow, 0 0 15px yellow,
-      0 0 8px rgb(72, 214, 72), 0 0 10px rgb(19, 248, 19), 0 0 12px blue;
+    box-shadow: 0 0 5px white, 0 0 10px yellow, 0 0 15px yellow, 0 0 8px #48d648, 0 0 10px #13f813, 0 0 12px blue;
   }
 }
