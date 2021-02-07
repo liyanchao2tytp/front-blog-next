@@ -2,11 +2,10 @@
  * @Author: lyc
  * @Date: 2020-10-25 21:46:18
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-07 00:47:29
+ * @LastEditTime: 2021-02-07 14:44:26
  * @Description: file content
  */
 import React, { useState } from "react";
-import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import {
@@ -34,7 +33,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 import LazyLoad from "react-lazyload";
 import fetch from "node-fetch";
-// import axios from "axios";
+import axios from "axios";
 
 import servicePath from "../config/apiUrl";
 import Header from "../components/Header";
@@ -43,6 +42,8 @@ import Author from "../components/Author";
 import Advert from "../components/Advert";
 import Footer from "../components/Footer";
 import { inject, observer } from "mobx-react";
+import { useRef } from "react";
+import { lowerFirst } from "lodash";
 import "animate.css";
 /**
  * @description: 根据store的状态动态导入样式
@@ -93,15 +94,12 @@ const Index = inject("store")(
 
     return (
       <div>
-        <link rel="stylesheet" type="text/css" href={store.indexDynamicCss} />
+        {/* <link rel="stylesheet" type="text/css" href={"animate.css"} /> */}
+
         <Affix offsetTop={0}>
           <div>
-            <Head>
-              <title>lyc的个人博客</title>
-              <link rel="icon" href="/favicon.ico" />
-            </Head>
             <div className="animate__animated animate__bounceInDown">
-              <Header></Header>
+              <Header store={store}></Header>
             </div>
           </div>
         </Affix>

@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2021-02-04 18:07:24
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-07 00:47:20
+ * @LastEditTime: 2021-02-07 01:15:46
  * @Description: file content
  */
 
@@ -23,8 +23,6 @@ class CssStore {
 
   AlterConcise() {
     this.is_concise = !this.is_concise
-  }
-  ChangeDynamicCss() {
     switch (this.indexDynamicCss) {
       case INDEX_CSS_FILES[0]:
         this.indexDynamicCss = INDEX_CSS_FILES[1]

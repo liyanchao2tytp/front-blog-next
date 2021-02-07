@@ -6,35 +6,33 @@ body {
   background-color: #cccccc;
 }
 /* 首页分页透明 */
-.ant-pagination > li{
-  opacity : 0.5;
+.ant-pagination > li {
+  opacity: 0.5;
 }
 /* 左侧文章 */
-.comm-main .comm-left{
-  background-color: rgba(255,255,255, 0.46);
+.comm-main .comm-left {
+  background-color: rgba(255, 255, 255, 0.46);
   /* opacity: 80%; */
 }
 /* 右侧作者栏 */
-.comm-main .comm-right{
-  background-color: rgba(255,255,255, 0.46); 
+.comm-main .comm-right {
+  background-color: rgba(255, 255, 255, 0.46);
 }
 
-.ant-list-items>li{
+.ant-list-items > li {
   margin: 0.125rem 0 0.125rem 0;
   border-radius: 0.625rem;
   transition: all 1s;
 }
 
-.ant-list-items>li:hover{
+.ant-list-items > li:hover {
   /* width: 1000px; */
   /* animation: opacity-to-hover 1.6s; */
   /* animation: animation 1000ms linear both; */
-  background-color: rgba(255,255,255, 0.69);
+  background-color: rgba(255, 255, 255, 0.69);
   /* box-shadow: 15px 15px 30px rgba(100,100,100,0.69),-15px 15px 30px rgba(100,100,100,0.69); */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
-
-  
 }
 
 /* @keyframes opacity-to-hover{
@@ -53,10 +51,6 @@ body {
   }
 } */
 
-
-
-
-
 .list-title {
   font-size: 1.5rem;
   color: #1e90ff;
@@ -71,7 +65,6 @@ body {
   display: flex;
   padding: 0.5rem 0;
   color: #aaa;
-  
 }
 .list-icon .list-icon-top {
   padding: 0 0 0 10px;
