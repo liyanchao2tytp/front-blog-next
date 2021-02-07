@@ -26,7 +26,6 @@ const Author = inject("store")(
             size={28}
             icon={<GithubOutlined />}
             className="github-icon"
-            onClick={() => store.AlterConcise()}
           ></Avatar>
         </Tooltip>
 
