@@ -1,23 +1,18 @@
 .active {
-  color: dodgerblue !important;
+  color: rgb(30, 144, 255) !important;
 }
-
 .article-menu {
   font-size: 12px;
 }
-
 .ant-anchor-link {
   background-color: rgba(255, 255, 255, 0);
 }
-
 .ant-anchor-link-title {
   font-size: 12px !important;
 }
-
 .ant-anchor-wrapper {
   background-color: rgba(255, 255, 255, 0.2);
 }
-
 .ant-anchor-wrapper {
   padding: 5px !important;
 }
@@ -25,7 +20,7 @@
 .bread-div {
   padding: 0.5rem;
   border-bottom: 1px solid #eee;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .center {
@@ -41,16 +36,14 @@
 .detailed-title-bar {
   background-color: rgba(255, 255, 255, 0.8);
 }
-
 .detailed-content {
   padding: 1.3rem;
   font-size: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
-}
-
-.detailed-content img {
-  width: 100%;
-  border: 1px solid #f3f3f3;
+  img {
+    width: 100%;
+    border: 1px solid #f3f3f3;
+  }
 }
 
 pre {
@@ -62,17 +55,14 @@ pre {
   font-family: Menlo, monospace;
   border-radius: 0.3rem;
 }
-
 pre {
   background-color: #283646 !important;
 }
-
 pre > code {
   border: 0px !important;
   background-color: #283646 !important;
   color: #fff;
 }
-
 code {
   display: inline-block;
   background-color: #f3f3f3;
@@ -101,7 +91,7 @@ code {
 .nav-title {
   text-align: center;
   color: #888;
-  border-bottom: 1px solid dodgerblue;
+  border-bottom: 1px solid rgb(30, 144, 255);
 }
 
 iframe {

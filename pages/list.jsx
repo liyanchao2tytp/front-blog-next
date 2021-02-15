@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-10-25 21:46:18
  * @LastEditors: lyc
- * @LastEditTime: 2020-11-21 17:50:40
+ * @LastEditTime: 2021-02-04 18:01:16
  * @Description: 使用参数的形式访问该页面  即?id=xxx
  */
 import React, { useEffect, useState } from "react";
@@ -31,7 +31,7 @@ import axios from "axios";
 import servicePath from "../config/apiUrl";
 
 import marked from "marked";
-import hljs from "highlight";
+import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 import "../styles/pages/comp.css"
 import "animate.css";

@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Header from "../components/Header";
-import "../styles/pages/detail.css"
+import "../styles/pages/detail.css";
 
 import { Col, Row, Breadcrumb, Affix } from "antd";
 import {
@@ -20,15 +20,15 @@ import Advert from "../components/Advert";
 import axios from "axios";
 
 import marked from "marked";
-import hljs from "highlight";
+import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 
-import Tocify from '../components/tocify.tsx'
+import Tocify from "../components/tocify.tsx";
 
-import servicePath from '../config/apiUrl'
-import "../styles/pages/detail.css"
+import servicePath from "../config/apiUrl";
+import "../styles/pages/detail.css";
 const Detail = (props) => {
-  const tocify = new Tocify()
+  const tocify = new Tocify();
   const renderer = new marked.Renderer();
 
   renderer.heading = function (text, level, raw) {
@@ -46,12 +46,10 @@ const Detail = (props) => {
     smartypants: false,
     highlight: function (code) {
       return hljs.highlightAuto(code).value;
-    }
+    },
   });
 
-
-
-  let html = marked(props.content)
+  let html = marked(props.content);
 
   return (
     <>
@@ -91,7 +89,8 @@ const Detail = (props) => {
             </div>
           </div>
 
-          <div className="detailed-content"
+          <div
+            className="detailed-content"
             dangerouslySetInnerHTML={{ __html: html }}
           >
             {/* <ReactMarkdown source={props.intro} escapeHtml={true} /> */}
@@ -104,10 +103,7 @@ const Detail = (props) => {
             <div className="detailed-nav comm-box">
               <div className="nav-title">文章目录</div>
 
-              <div className="toc-list">
-                {tocify && tocify.render()}
-              </div>
-
+              <div className="toc-list">{tocify && tocify.render()}</div>
             </div>
           </Affix>
         </Col>
@@ -117,7 +113,6 @@ const Detail = (props) => {
 };
 
 Detail.getInitialProps = async (context) => {
-
   let id = context.query.id;
 
   const promise = new Promise((resolve) => {
