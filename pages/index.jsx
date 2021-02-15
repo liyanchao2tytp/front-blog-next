@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-10-25 21:46:18
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-07 14:44:26
+ * @LastEditTime: 2021-02-15 17:25:29
  * @Description: file content
  */
 import React, { useState } from "react";
@@ -34,6 +34,7 @@ import "highlight.js/styles/monokai-sublime.css";
 import LazyLoad from "react-lazyload";
 import fetch from "node-fetch";
 import axios from "axios";
+import { inject, observer } from "mobx-react";
 
 import servicePath from "../config/apiUrl";
 import Header from "../components/Header";
@@ -41,9 +42,7 @@ import Header from "../components/Header";
 import Author from "../components/Author";
 import Advert from "../components/Advert";
 import Footer from "../components/Footer";
-import { inject, observer } from "mobx-react";
-import { useRef } from "react";
-import { lowerFirst } from "lodash";
+import IndexCarousel from "../components/index/IndexCarousel";
 import "animate.css";
 /**
  * @description: 根据store的状态动态导入样式
@@ -55,9 +54,6 @@ const Index = inject("store")(
     const [myList, setMylist] = useState(props.data.article);
     const renderer = new marked.Renderer();
     let total = props.data.num[0].total;
-    if (store.is_concise) {
-      console.log("------ 条件加载样式执行了 ------");
-    }
     marked.setOptions({
       renderer: renderer,
       gfm: true,
@@ -80,6 +76,7 @@ const Index = inject("store")(
       textAlign: "center",
       background: "#364d79",
     };
+
     /**
      * @description: 分页 跳转 获取数据
      * @param {page}
@@ -94,8 +91,6 @@ const Index = inject("store")(
 
     return (
       <div>
-        {/* <link rel="stylesheet" type="text/css" href={"animate.css"} /> */}
-
         <Affix offsetTop={0}>
           <div>
             <div className="animate__animated animate__bounceInDown">
@@ -106,44 +101,8 @@ const Index = inject("store")(
 
         <Row className="comm-main" type="flex" justify="center">
           <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
-            <Carousel autoplay>
-              <div>
-                <h3>
-                  <img
-                    style={contentStyle}
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603443491910&di=e4691e8550018d62f8fa544b08ef8636&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201702%2F03%2F20170203100831_ZnuRG.jpeg"
-                    alt=""
-                  />
-                </h3>
-              </div>
-              <div>
-                <h3>
-                  <img
-                    style={contentStyle}
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603443458590&di=00276f03c816a2efa1cdf70a876a3152&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201408%2F18%2F102924ksgdxyyacjdggygx.jpg"
-                    alt=""
-                  />
-                </h3>
-              </div>
-              <div>
-                <h3>
-                  <img
-                    style={contentStyle}
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603519904703&di=77b3b7c36c8c8712a6089dd283c80a14&imgtype=0&src=http%3A%2F%2Fbbsfiles.vivo.com.cn%2Fvivobbs%2Fattachment%2Fforum%2F201706%2F24%2F160153jcicq9jfcisld7v7.jpg"
-                    alt=""
-                  />
-                </h3>
-              </div>
-              <div>
-                <h3>
-                  <img
-                    style={contentStyle}
-                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603449576121&di=4c361ba3ea8e5c0d2dd37dec595724a9&imgtype=0&src=http%3A%2F%2Fartenvoyage.org%2FFCKEeditor%2Fattached%2Fimage%2F20160125%2F20160125130677037703.jpg"
-                    alt=""
-                  />
-                </h3>
-              </div>
-            </Carousel>
+            {/* 首页轮播图 */}
+            <IndexCarousel />
 
             <List
               header={<Divider>最新日志</Divider>}
@@ -159,12 +118,24 @@ const Index = inject("store")(
                     )}
                     <div className="animate__animated animate__bounceInLeft animate__slow">
                       <div className="list-title">
-                        <Link
-                          href={{ pathname: "/detail", query: { id: item.id } }}
-                          prefetch
-                        >
-                          <a>{item.title}</a>
-                        </Link>
+                        {store.is_static_page ? (
+                          <Link
+                            href={"/article/[uuid]"}
+                            as={"/article/" + item.id}
+                          >
+                            <a>{item.title}</a>
+                          </Link>
+                        ) : (
+                          <Link
+                            href={{
+                              pathname: "/detail",
+                              query: { id: item.id },
+                            }}
+                            prefetch
+                          >
+                            <a>{item.title}</a>
+                          </Link>
+                        )}
                       </div>
                       <div className="list-icon">
                         <span className="list-icon-top"></span>

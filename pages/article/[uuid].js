@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 17:25:52
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-02 16:59:10
+ * @LastEditTime: 2021-02-08 22:21:44
  * @Description: 使用动态路由 替换带参的url (?iuuid=xxx)
  */
 import React from "react";
@@ -19,6 +19,7 @@ import {
 import Author from "../../components/Author";
 import Advert from "../../components/Advert";
 import fetch from 'node-fetch'
+import axios from 'axios'
 import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
@@ -116,7 +117,7 @@ const Article = ({ result }) => {
   );
 };
 
-// Detail.getInitialProps = async (context) => {
+// Article.getInitialProps = async (context) => {
 
 //   let id = context.query.id;
 
@@ -149,14 +150,5 @@ export async function getStaticProps({ params }) {
   }
 }
 
-// export const getServerSideProps = async (context) => {
-//   const res = await fetch(`${servicePath.getArticleById}/${context.params.id}`)
-//   const temp = await res.json()
-//   const result = temp.data[0]
-//   return {
-//     props: {
-//       result
-//     }
-//   }
-// }
+
 export default Article;

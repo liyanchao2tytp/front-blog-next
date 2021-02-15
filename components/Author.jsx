@@ -4,10 +4,10 @@ import "../styles/components/Author.css";
 import { inject, observer } from "mobx-react";
 import store from "../store";
 const Author = inject("store")(
-  observer((props) => {
+  observer(({ store }) => {
     return (
       <div className="author-div comm-box">
-        <div>
+        <div onClick={() => store.AlterIsStaticPage()}>
           <Avatar
             size={100}
             className="mylight"

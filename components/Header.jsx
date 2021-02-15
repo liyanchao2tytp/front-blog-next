@@ -31,8 +31,10 @@ const Header = inject("store")(
 
     const handleClick = (e) => {
       if (e.key == 0) {
+        // 去首页
         Router.push("/");
-      } else {
+      } else if (store.is_static_page) {
+        // 动态参数 跳转 /[uuid]
         Router.push(
           {
             pathname: "/list",
@@ -40,6 +42,8 @@ const Header = inject("store")(
           },
           `blog/${e.key}`
         );
+      } else {
+        Router.push("/list?id=" + e.key); // 带参跳转 ?id=uuid
       }
     };
 
@@ -54,11 +58,24 @@ const Header = inject("store")(
           <Row type="flex" justify="center">
             <Col xs={24} sm={24} md={15} lg={14} push={2}>
               <span className="header-logo">
-                <Link href="/">
-                  <a onClick={() => store.AlterConcise()}>
-                    {store.is_concise ? "Simple" : "Complexity"}
-                  </a>
-                </Link>
+                <div>
+                  {/* 根据mobx中is_staic_page和is_concise的状态决定哪种模式 */}
+                  {store.is_static_page ? (
+                    <Link href="/">
+                      <a onClick={() => store.AlterIsStaticPage()}>Static</a>
+                    </Link>
+                  ) : (
+                    <a
+                      href="/"
+                      onClick={(e) => {
+                        store.AlterConcise();
+                        e.preventDefault();
+                      }}
+                    >
+                      {store.is_concise ? "Simple" : "Complexity"}
+                    </a>
+                  )}
+                </div>
               </span>
               <span className="header-txt">
                 在学习阶段，只做了一些微小的工作

@@ -3,10 +3,6 @@ import { useEffect } from "react";
 import { Row, Col } from "antd";
 import "../styles/pages/cover.css";
 const Cover = () => {
-  useEffect(() => {
-    document.body.style.backgroundImage =
-      "url('https://s1.ax1x.com/2020/10/28/B33D4H.jpg') no-repeatnpm";
-  }, []);
   return (
     <>
       <Row type="flex" justify="center">

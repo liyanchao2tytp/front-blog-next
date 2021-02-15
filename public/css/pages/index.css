@@ -31,7 +31,7 @@ body {
   transition: all 1s;
 }
 
-.ant-list-items > li :hover {
+.ant-list-items > li:hover {
   /* width: 1000px; */
   /* animation: opacity-to-hover 1.6s; */
   /* animation: animation 1000ms linear both; */
