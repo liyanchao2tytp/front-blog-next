@@ -66,7 +66,6 @@ const Header = inject("store")(
                     </Link>
                   ) : (
                     <a
-                      href="/"
                       onClick={(e) => {
                         store.AlterConcise();
                         e.preventDefault();
