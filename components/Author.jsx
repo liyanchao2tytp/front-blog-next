@@ -2,14 +2,14 @@
  * @Author: lyc
  * @Date: 2021-02-08 21:37:39
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-15 23:14:10
+ * @LastEditTime: 2021-02-17 00:00:56
  * @Description: 个人信息组件
  */
 import { Tooltip, Avatar, Divider } from "antd";
 import { GithubOutlined, QqOutlined, WechatOutlined } from "@ant-design/icons/";
 import "../styles/components/Author.css";
 import { inject, observer } from "mobx-react";
-import store from "../store";
+
 const Author = inject("store")(
   observer(({ store }) => {
     return (

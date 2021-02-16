@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import Header from "../components/Header";
 import "../styles/pages/detail.css";
 
@@ -9,11 +10,6 @@ import {
   FolderOutlined,
   FireOutlined,
 } from "@ant-design/icons";
-// import ReactMarkdown from "react-markdown";
-
-// import "markdown-navbar/dist/navbar.css";
-
-// import MarkNav from "markdown-navbar";
 
 import Author from "../components/Author";
 import Advert from "../components/Advert";
@@ -63,10 +59,14 @@ const Detail = (props) => {
           <div className="bread-div">
             <Breadcrumb>
               <Breadcrumb.Item>
-                <a href="/">首页</a>
+                <Link href="/">
+                  <a>首页</a>
+                </Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <a href={`/list?id=${props.typeId}`}>文章列表</a>
+                <Link href={`/list?id=${props.typeId}`}>
+                  <a>文章列表</a>
+                </Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>{props.title}</Breadcrumb.Item>
             </Breadcrumb>
@@ -92,9 +92,7 @@ const Detail = (props) => {
           <div
             className="detailed-content"
             dangerouslySetInnerHTML={{ __html: html }}
-          >
-            {/* <ReactMarkdown source={props.intro} escapeHtml={true} /> */}
-          </div>
+          ></div>
         </Col>
         <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />

@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 15:30:42
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-06 01:17:06
+ * @LastEditTime: 2021-02-16 23:16:33
  * @Description: file content
  */
 import React, { useEffect, useState } from "react";
@@ -103,7 +103,7 @@ const ArticleList = ({ atlist }) => {
           <div className="bread-div">
             <Breadcrumb>
               <Breadcrumb.Item>
-                <a href="/">首页</a>
+                <Link href="/"><a>首页</a></Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>{articleType}</Breadcrumb.Item>
             </Breadcrumb>

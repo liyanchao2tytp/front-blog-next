@@ -2,13 +2,12 @@
  * @Author: lyc
  * @Date: 2020-11-21 17:25:52
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-08 22:21:44
+ * @LastEditTime: 2021-02-16 23:50:20
  * @Description: 使用动态路由 替换带参的url (?iuuid=xxx)
  */
 import React from "react";
 import Head from "next/head";
-import Header from "../../components/Header";
-import "../../styles/pages/detail.css"
+import Link from 'next/link'
 
 import { Col, Row, Breadcrumb, Affix } from "antd";
 import {
@@ -16,15 +15,16 @@ import {
   FolderOutlined,
   FireOutlined,
 } from "@ant-design/icons";
+import Header from "../../components/Header";
 import Author from "../../components/Author";
 import Advert from "../../components/Advert";
 import fetch from 'node-fetch'
-import axios from 'axios'
 import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 
 import Tocify from '../../components/tocify.tsx'
+import "../../styles/pages/detail.css"
 
 import servicePath from '../../config/apiUrl'
 
@@ -69,7 +69,7 @@ const Article = ({ result }) => {
                 <a href="/">首页</a>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <a href={`/list/${result.typeId}`}>文章列表</a>
+                <Link href={`/list/[id]`} as={`/list/${result.typeId}`}><a >文章列表</a></Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>{result.title}</Breadcrumb.Item>
             </Breadcrumb>
@@ -94,9 +94,8 @@ const Article = ({ result }) => {
 
           <div className="detailed-content"
             dangerouslySetInnerHTML={{ __html: html }}
-          >
-            {/* <ReactMarkdown source={props.intro} escapeHtml={true} /> */}
-          </div>
+          />
+
         </Col>
         <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />

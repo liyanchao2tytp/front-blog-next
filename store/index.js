@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2021-02-04 18:07:24
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-15 23:31:31
+ * @LastEditTime: 2021-02-17 00:23:02
  * @Description: file content
  */
 
@@ -26,14 +26,17 @@ const INDEX_CSS_FILES = [
   'css/pages/indexSimple.css'
 ]
 class CssStore {
-  /** 切换页面的css样式 */
-  is_concise = false
   /** 切换是否是静态页面 */
   is_static_page = false
+  /** 切换页面的css样式 */
+  is_concise = this.is_static_page ? true : false
+
   indexDynamicCss = INDEX_CSS_FILES[0]
+
   constructor() {
     makeAutoObservable(this)
   }
+
 
   AlterConcise() {
     this.is_concise = !this.is_concise
@@ -48,13 +51,8 @@ class CssStore {
   }
   AlterIsStaticPage() {
     this.is_static_page = !this.is_static_page
-    //  静态 false => true
-    if (this.is_static_page) {
-      // 静态 true => 简洁 true
-      if (!this.is_concise) {
-        this.AlterConcise()
-      }
-    }
+    //  静态 false => true -> 简介true
+    this.is_static_page && !this.is_concise && this.AlterConcise()
   }
 
 }

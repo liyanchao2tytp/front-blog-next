@@ -28,6 +28,18 @@ const Header = inject("store")(
       };
       fetchData();
     }, []);
+    /**
+     * @description: 网页失去焦点时，切换网页title
+     */
+    useEffect(() => {
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+          document.title = `• .•̀   回来看看嘛~`;
+        } else {
+          document.title = "lyc的个人博客";
+        }
+      });
+    });
 
     const handleClick = (e) => {
       if (e.key == 0) {
