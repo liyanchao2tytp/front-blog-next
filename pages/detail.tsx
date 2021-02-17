@@ -19,10 +19,11 @@ import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 
-import Tocify from "../components/tocify.tsx";
 
+import Tocify from "../components/tocify";
 import servicePath from "../config/apiUrl";
 import "../styles/pages/detail.css";
+
 const Detail = (props) => {
   const tocify = new Tocify();
   const renderer = new marked.Renderer();
@@ -31,6 +32,7 @@ const Detail = (props) => {
     const anchor = tocify.add(text, level);
     return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
   };
+
   marked.setOptions({
     renderer: renderer,
     gfm: true,
@@ -54,7 +56,7 @@ const Detail = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header></Header>
-      <Row className="comm-main" type="flex" justify="center">
+      <Row className="comm-main" justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
           <div className="bread-div">
             <Breadcrumb>

@@ -1,6 +1,13 @@
-import { useContext } from "react";
+/*
+ * @Author: lyc
+ * @Date: 2021-02-15 23:42:57
+ * @LastEditors: lyc
+ * @LastEditTime: 2021-02-17 21:10:36
+ * @Description: file content
+ */
+
 import { List, Divider, Badge } from "antd";
-import { inject, observer } from "mobx-react";
+import { observer } from "mobx-react";
 import Link from "next/link";
 import {
   FireOutlined,
@@ -10,9 +17,16 @@ import {
 import LazyLoad from "react-lazyload";
 import hljs from "highlight.js";
 import marked from "marked";
-
-const ArticleList = inject("store")(
-  observer(({ title, myList, store }) => {
+import { NextPage } from 'next';
+import { useContext } from "react";
+import {cssStore} from '../store'
+import {ArticleType} from '../models/article'
+interface ArListProps {
+  title: string;
+  myList: ArticleType[];
+}
+const ArticleList:NextPage<ArListProps> = ({ title, myList }) => {
+    const store = useContext(cssStore)
     const renderer = new marked.Renderer();
 
     marked.setOptions({
@@ -34,7 +48,7 @@ const ArticleList = inject("store")(
         header={<Divider>{title}</Divider>}
         itemLayout="vertical"
         dataSource={myList}
-        renderItem={(item) => (
+        renderItem={(item:ArticleType) => (
           <List.Item>
             <LazyLoad height={200} offset={-200}>
               {item.is_top ? <Badge.Ribbon text="置顶" color="red" /> : ""}
@@ -81,6 +95,6 @@ const ArticleList = inject("store")(
         )}
       />
     );
-  })
-);
+  }
+
 export default ArticleList;

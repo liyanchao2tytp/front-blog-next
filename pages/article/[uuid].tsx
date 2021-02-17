@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 17:25:52
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-16 23:50:20
+ * @LastEditTime: 2021-02-17 22:17:19
  * @Description: 使用动态路由 替换带参的url (?iuuid=xxx)
  */
 import React from "react";
@@ -23,7 +23,7 @@ import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 
-import Tocify from '../../components/tocify.tsx'
+import Tocify from '../../components/tocify'
 import "../../styles/pages/detail.css"
 
 import servicePath from '../../config/apiUrl'
@@ -61,7 +61,7 @@ const Article = ({ result }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header></Header>
-      <Row className="comm-main" type="flex" justify="center">
+      <Row className="comm-main" justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
           <div className="bread-div">
             <Breadcrumb>

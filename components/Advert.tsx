@@ -2,13 +2,15 @@
  * @Author: lyc
  * @Date: 2020-10-09 08:57:28
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-15 23:37:18
+ * @LastEditTime: 2021-02-17 19:29:56
  * @Description: 主页右侧 广告信息组件
  */
 
-const Advert = () => (
+import { FC } from "react";
+
+const Advert :FC= () => (
   <div className="add-div">
-    <style jsx="true">
+    <style jsx={true}>
       {`
         .add-div {
           margin-top: 1rem;
