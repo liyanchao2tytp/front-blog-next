@@ -1,3 +1,10 @@
+/*
+ * @Author: lyc
+ * @Date: 2021-02-18 12:47:18
+ * @LastEditors: lyc
+ * @LastEditTime: 2021-02-19 01:05:59
+ * @Description: file content
+ */
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -5,11 +12,7 @@ import Header from "../components/Header";
 import "../styles/pages/detail.css";
 
 import { Col, Row, Breadcrumb, Affix } from "antd";
-import {
-  CalendarOutlined,
-  FolderOutlined,
-  FireOutlined,
-} from "@ant-design/icons";
+
 
 import Author from "../components/Author";
 import Advert from "../components/Advert";
@@ -23,6 +26,8 @@ import "highlight.js/styles/monokai-sublime.css";
 import Tocify from "../components/tocify";
 import servicePath from "../config/apiUrl";
 import "../styles/pages/detail.css";
+import TopBreadcrumb from "../components/TopBreadcrumb";
+import MainArticle from "../components/article/MainArticle";
 
 const Detail = (props) => {
   const tocify = new Tocify();
@@ -58,43 +63,12 @@ const Detail = (props) => {
       <Header></Header>
       <Row className="comm-main" justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
-          <div className="bread-div">
-            <Breadcrumb>
-              <Breadcrumb.Item>
-                <Link href="/">
-                  <a>首页</a>
-                </Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link href={`/list?id=${props.typeId}`}>
-                  <a>文章列表</a>
-                </Link>
-              </Breadcrumb.Item>
+          {/* 面包屑导航 */}
+            <TopBreadcrumb typeId={props.typeId} >
               <Breadcrumb.Item>{props.title}</Breadcrumb.Item>
-            </Breadcrumb>
-          </div>
-          <div className="detailed-title-bar">
-            <div className="detailed-title">{props.title}</div>
-            <div className="list-icon center">
-              <span>
-                <CalendarOutlined />
-                {props.addTime}
-              </span>
-              <span>
-                <FolderOutlined />
-                {props.typeName}
-              </span>
-              <span>
-                <FireOutlined />
-                {props.view_count}人
-              </span>
-            </div>
-          </div>
-
-          <div
-            className="detailed-content"
-            dangerouslySetInnerHTML={{ __html: html }}
-          ></div>
+            </TopBreadcrumb>
+          {/* 文章详细内容 */}
+            <MainArticle result={props} html={html} />
         </Col>
         <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />

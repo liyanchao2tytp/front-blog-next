@@ -2,11 +2,11 @@
  * @Author: lyc
  * @Date: 2021-02-15 23:42:57
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-17 19:25:20
+ * @LastEditTime: 2021-02-19 00:43:52
  * @Description: file content
  */
 import {createContext} from 'react'
-import CssStore, { ICssStore } from './CssStore'
+import CssStore from './CssStore'
 
 // const StoreContext = createContext({
 //    cssStore: new CssStore()

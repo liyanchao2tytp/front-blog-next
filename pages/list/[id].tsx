@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 15:30:42
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-17 22:22:47
+ * @LastEditTime: 2021-02-18 13:49:17
  * @Description: file content
  */
 import React, { useEffect, useState } from "react";
@@ -37,7 +37,7 @@ import Header from "../../components/Header";
 import Author from "../../components/Author";
 import Advert from "../../components/Advert";
 import Footer from "../../components/Footer";
-import { ARTICLE_TYPE } from '../../config/articleType.js'
+import { ARTICLE_TYPE } from '../../config/articleType'
 import servicePath from "../../config/apiUrl";
 import "../../styles/pages/comp.css"
 import { ArticleType } from "../../models/article";

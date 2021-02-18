@@ -35,7 +35,7 @@ const Header :FC= () => {
   useEffect(() => {
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "hidden") {
-        document.title = `• .•̀   回来看看嘛~`;
+        document.title = `• .•̀ 回来看看嘛~`;
       } else {
         document.title = "lyc的个人博客";
       }

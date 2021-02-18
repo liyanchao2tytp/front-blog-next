@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 17:25:52
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-17 22:17:19
+ * @LastEditTime: 2021-02-19 01:22:44
  * @Description: 使用动态路由 替换带参的url (?iuuid=xxx)
  */
 import React from "react";
@@ -27,6 +27,8 @@ import Tocify from '../../components/tocify'
 import "../../styles/pages/detail.css"
 
 import servicePath from '../../config/apiUrl'
+import TopBreadcrumb from "../../components/TopBreadcrumb";
+import MainArticle from "../../components/article/MainArticle";
 
 const Article = ({ result }) => {
   const tocify = new Tocify()
@@ -63,39 +65,12 @@ const Article = ({ result }) => {
       <Header></Header>
       <Row className="comm-main" justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
-          <div className="bread-div">
-            <Breadcrumb>
-              <Breadcrumb.Item>
-                <a href="/">首页</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link href={`/list/[id]`} as={`/list/${result.typeId}`}><a >文章列表</a></Link>
-              </Breadcrumb.Item>
+          {/* 面包屑导航 */}
+            <TopBreadcrumb typeId={result.typeId} >
               <Breadcrumb.Item>{result.title}</Breadcrumb.Item>
-            </Breadcrumb>
-          </div>
-          <div className="detailed-title-bar">
-            <div className="detailed-title">{result.title}</div>
-            <div className="list-icon center">
-              <span>
-                <CalendarOutlined />
-                {result.addTime}
-              </span>
-              <span>
-                <FolderOutlined />
-                {result.typeName}
-              </span>
-              <span>
-                <FireOutlined />
-                {result.view_count}人
-              </span>
-            </div>
-          </div>
-
-          <div className="detailed-content"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
-
+            </TopBreadcrumb>
+          {/* 文章详细内容 */}
+            <MainArticle result={result} html={html} />
         </Col>
         <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />

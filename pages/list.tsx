@@ -2,11 +2,10 @@
  * @Author: lyc
  * @Date: 2020-10-25 21:46:18
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-17 21:03:34
+ * @LastEditTime: 2021-02-18 13:32:12
  * @Description: 使用参数的形式访问该页面  即?id=xxx
  */
 import React, { useEffect, useState } from "react";
-import Head from "next/head";
 import Header from "../components/Header";
 import Author from "../components/Author";
 import Advert from "../components/Advert";
@@ -14,20 +13,14 @@ import Footer from "../components/Footer";
 import {
   Col,
   Row,
-  List,
   Breadcrumb,
   BackTop,
   ConfigProvider,
-  Divider,
-  Badge,
   Pagination,
 } from "antd";
 import zhCN from "antd/lib/locale/zh_CN";
 
 import {
-  FireOutlined,
-  CalendarOutlined,
-  FolderOutlined,
   RocketOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
@@ -39,10 +32,11 @@ import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 import "../styles/pages/comp.css";
 import "animate.css";
-import LazyLoad, { lazyload } from "react-lazyload";
+import LazyLoad from "react-lazyload";
 import { useRouter } from "next/router";
-import { ARTICLE_TYPE } from "../config/articleType.js";
+import { ARTICLE_TYPE } from "../config/articleType";
 import ArticleList from "../components/ArticleList";
+import TopBreadcrumb from "../components/TopBreadcrumb";
 const myList = (props) => {
   const [myList, setMylist] = useState(props.data.article);
   const [articleType, setType] = useState("");
@@ -97,16 +91,8 @@ const myList = (props) => {
       <Header />
       <Row className="comm-main" justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
-          <div className="bread-div">
-            <Breadcrumb>
-              <Breadcrumb.Item>
-                <Link href="/">
-                  <a>首页</a>
-                </Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>{articleType}</Breadcrumb.Item>
-            </Breadcrumb>
-          </div>
+          {/* 面包屑导航 */}
+          <TopBreadcrumb articleType={articleType} />
           {/* 文章列表 */}
           <ArticleList title={articleType} myList={myList} />
 
