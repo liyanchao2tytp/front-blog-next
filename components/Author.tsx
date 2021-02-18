@@ -2,16 +2,18 @@
  * @Author: lyc
  * @Date: 2021-02-08 21:37:39
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-17 00:00:56
+ * @LastEditTime: 2021-02-17 19:37:56
  * @Description: 个人信息组件
  */
+import React ,{FC, useContext} from 'react'
 import { Tooltip, Avatar, Divider } from "antd";
 import { GithubOutlined, QqOutlined, WechatOutlined } from "@ant-design/icons/";
 import "../styles/components/Author.css";
-import { inject, observer } from "mobx-react";
+import { cssStore } from '../store';
+import { observer } from 'mobx-react';
 
-const Author = inject("store")(
-  observer(({ store }) => {
+const Author: FC = () => {
+  const store = useContext(cssStore)
     return (
       <div className="author-div comm-box">
         <div onClick={() => store.AlterIsStaticPage()}>
@@ -49,7 +51,6 @@ const Author = inject("store")(
         </Tooltip>
       </div>
     );
-  })
-);
+  }
 
-export default Author;
+export default observer(Author);

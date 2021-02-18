@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-10-25 21:46:18
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-16 16:45:35
+ * @LastEditTime: 2021-02-17 21:03:34
  * @Description: 使用参数的形式访问该页面  即?id=xxx
  */
 import React, { useEffect, useState } from "react";
@@ -42,7 +42,7 @@ import "animate.css";
 import LazyLoad, { lazyload } from "react-lazyload";
 import { useRouter } from "next/router";
 import { ARTICLE_TYPE } from "../config/articleType.js";
-import ArticleList from "../components/index/ArticleList";
+import ArticleList from "../components/ArticleList";
 const myList = (props) => {
   const [myList, setMylist] = useState(props.data.article);
   const [articleType, setType] = useState("");
@@ -95,7 +95,7 @@ const myList = (props) => {
   return (
     <>
       <Header />
-      <Row className="comm-main" type="flex" justify="center">
+      <Row className="comm-main" justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
           <div className="bread-div">
             <Breadcrumb>

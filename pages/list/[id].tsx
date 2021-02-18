@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 15:30:42
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-16 23:16:33
+ * @LastEditTime: 2021-02-17 22:22:47
  * @Description: file content
  */
 import React, { useEffect, useState } from "react";
@@ -40,8 +40,13 @@ import Footer from "../../components/Footer";
 import { ARTICLE_TYPE } from '../../config/articleType.js'
 import servicePath from "../../config/apiUrl";
 import "../../styles/pages/comp.css"
+import { ArticleType } from "../../models/article";
+import { NextPage } from "next";
 
-const ArticleList = ({ atlist }) => {
+interface Props{
+  atlist:any
+}
+const ArticleList:NextPage<Props> = ({ atlist }) => {
   const [myList, setMylist] = useState(atlist.data.article);
   const [articleType, setType] = useState('')
   const renderer = new marked.Renderer();
@@ -98,7 +103,7 @@ const ArticleList = ({ atlist }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header></Header>
-      <Row className="comm-main" type="flex" justify="center">
+      <Row className="comm-main"  justify="center">
         <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
           <div className="bread-div">
             <Breadcrumb>
@@ -116,7 +121,7 @@ const ArticleList = ({ atlist }) => {
 
             itemLayout="vertical"
             dataSource={myList}
-            renderItem={(item) => (
+            renderItem={(item:ArticleType) => (
               <List.Item>
                 <LazyLoad height={200} offset={-200}>
 

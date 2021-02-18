@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2021-02-04 18:07:24
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-17 00:23:02
+ * @LastEditTime: 2021-02-17 22:13:59
  * @Description: file content
  */
 
@@ -21,11 +21,19 @@ import { makeAutoObservable } from "mobx"
  *    Static        静态简洁页面
  */
 /** 两种样式 */
-const INDEX_CSS_FILES = [
+enum INDEX_CSS_FILES {
   'css/pages/index.css',
   'css/pages/indexSimple.css'
-]
-class CssStore {
+}
+export interface ICssStore{
+  is_static_page: boolean;
+  is_concise: boolean;
+  indexDynamicCss: string;
+  AlterConcise(): void;
+  AlterIsStaticPage(): void;
+}
+
+export default class CssStore implements ICssStore {
   /** 切换是否是静态页面 */
   is_static_page = false
   /** 切换页面的css样式 */
@@ -56,5 +64,4 @@ class CssStore {
   }
 
 }
-const store = new CssStore();
-export default store
+
