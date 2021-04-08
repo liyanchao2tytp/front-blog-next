@@ -2,12 +2,11 @@
  * @Author: lyc
  * @Date: 2021-02-18 12:47:18
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-19 01:05:59
+ * @LastEditTime: 2021-03-08 10:42:35
  * @Description: file content
  */
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import Header from "../components/Header";
 import "../styles/pages/detail.css";
 

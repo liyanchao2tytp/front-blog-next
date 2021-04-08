@@ -1,5 +1,12 @@
 /*
  * @Author: lyc
+ * @Date: 2021-02-19 01:31:38
+ * @LastEditors: lyc
+ * @LastEditTime: 2021-03-08 11:21:25
+ * @Description: file content
+ */
+/*
+ * @Author: lyc
  * @Date: 2020-10-25 21:46:18
  * @LastEditors: lyc
  * @LastEditTime: 2021-02-17 22:27:39
@@ -17,8 +24,7 @@ import axios from "axios";
 import servicePath from "../config/apiUrl";
 import Header from "../components/Header";
 
-import Author from "../components/Author";
-import Advert from "../components/Advert";
+
 import Footer from "../components/Footer";
 import IndexCarousel from "../components/index/IndexCarousel";
 import "highlight.js/styles/monokai-sublime.css";
@@ -26,6 +32,7 @@ import "animate.css";
 import ArticleList from "../components/ArticleList";
 import { GetStaticProps } from "next";
 import { ICssStore } from "../store/CssStore";
+import RightPageComponent from '../components/RightPageComponent'
 
 /**
  * @description: 根据store的状态动态导入样式
@@ -87,14 +94,8 @@ const Index:NextPage<Props> =
              </ConfigProvider>
            </LazyLoad>
          </Col>
-         <Col className="comm-right" xs={0} sm={0} md={6} lg={5} xl={4}>
-           <div className="animate__animated animate__fadeInRightBig">
-             {/* 个人信息 */}
-             <Author />
-             {/* 广告信息 */}
-             <Advert />
-           </div>
-         </Col>
+         {/* 网页 右侧 */}
+         <RightPageComponent />
        </Row>
 
        <Footer />

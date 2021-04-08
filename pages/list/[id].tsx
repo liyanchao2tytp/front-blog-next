@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 15:30:42
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-18 13:49:17
+ * @LastEditTime: 2021-03-08 11:22:46
  * @Description: file content
  */
 import React, { useEffect, useState } from "react";
@@ -42,6 +42,7 @@ import servicePath from "../../config/apiUrl";
 import "../../styles/pages/comp.css"
 import { ArticleType } from "../../models/article";
 import { NextPage } from "next";
+import RightPageComponent from "../../components/RightPageComponent";
 
 interface Props{
   atlist:any
@@ -177,12 +178,7 @@ const ArticleList:NextPage<Props> = ({ atlist }) => {
             </LazyLoad>
           </ConfigProvider>
         </Col>
-        <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
-          <div className="animate__animated animate__fadeInRightBig">
-            <Author />
-            <Advert />
-          </div>
-        </Col>
+        <RightPageComponent />
       </Row>
       <Footer />
 

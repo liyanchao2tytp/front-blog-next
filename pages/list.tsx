@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-10-25 21:46:18
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-18 13:32:12
+ * @LastEditTime: 2021-03-08 11:23:51
  * @Description: 使用参数的形式访问该页面  即?id=xxx
  */
 import React, { useEffect, useState } from "react";
@@ -13,7 +13,6 @@ import Footer from "../components/Footer";
 import {
   Col,
   Row,
-  Breadcrumb,
   BackTop,
   ConfigProvider,
   Pagination,
@@ -37,6 +36,7 @@ import { useRouter } from "next/router";
 import { ARTICLE_TYPE } from "../config/articleType";
 import ArticleList from "../components/ArticleList";
 import TopBreadcrumb from "../components/TopBreadcrumb";
+import RightPageComponent from "../components/RightPageComponent";
 const myList = (props) => {
   const [myList, setMylist] = useState(props.data.article);
   const [articleType, setType] = useState("");
@@ -116,12 +116,7 @@ const myList = (props) => {
             </LazyLoad>
           </ConfigProvider>
         </Col>
-        <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
-          <div className="animate__animated animate__fadeInRightBig">
-            <Author />
-            <Advert />
-          </div>
-        </Col>
+        <RightPageComponent />
       </Row>
       <Footer />
 

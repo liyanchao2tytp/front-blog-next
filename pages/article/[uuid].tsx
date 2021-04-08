@@ -2,7 +2,7 @@
  * @Author: lyc
  * @Date: 2020-11-21 17:25:52
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-19 01:22:44
+ * @LastEditTime: 2021-03-08 10:38:25
  * @Description: 使用动态路由 替换带参的url (?iuuid=xxx)
  */
 import React from "react";
@@ -10,11 +10,7 @@ import Head from "next/head";
 import Link from 'next/link'
 
 import { Col, Row, Breadcrumb, Affix } from "antd";
-import {
-  CalendarOutlined,
-  FolderOutlined,
-  FireOutlined,
-} from "@ant-design/icons";
+
 import Header from "../../components/Header";
 import Author from "../../components/Author";
 import Advert from "../../components/Advert";
@@ -75,16 +71,7 @@ const Article = ({ result }) => {
         <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />
           <Advert />
-          <Affix offsetTop={5}>
-            <div className="detailed-nav comm-box">
-              <div className="nav-title">文章目录</div>
-
-              <div className="toc-list">
-                {tocify && tocify.render()}
-              </div>
-
-            </div>
-          </Affix>
+      
         </Col>
       </Row>
     </>

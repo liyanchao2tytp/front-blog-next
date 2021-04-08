@@ -2,11 +2,10 @@
  * @Author: lyc
  * @Date: 2021-02-15 23:42:57
  * @LastEditors: lyc
- * @LastEditTime: 2021-02-17 20:18:28
+ * @LastEditTime: 2021-03-08 11:22:12
  * @Description: file content
  */
 import React from "react";
-import { useEffect } from "react";
 import { Row, Col } from "antd";
 import "../styles/pages/cover.css";
 import { NextPage } from "next";
